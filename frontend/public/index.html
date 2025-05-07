@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="%PUBLIC_URL%/favicon/favicon.ico" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+
+  <script>
+    (function (w, d) {
+      w.CollectId = "5ff855612e49d14366d17920";
+      var h = d.head || d.getElementsByTagName("head")[0];
+      var s = d.createElement("script");
+      s.setAttribute("type", "text/javascript");
+      s.async = true;
+      s.setAttribute("src", "https://collectcdn.com/launcher.js");
+      h.appendChild(s);
+    })(window, document);
+  </script>
+  <title>AgroSmart</title>
+</head>
+<script>
+  (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="_sO5jia2QfbLPnxuddBnY";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+
+  <!-- Weather Widget -->
+  <!-- <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-f737e17f-b7a3-45fb-8618-79c3c03ccb47" data-elfsight-app-lazy></div> -->
+  
+
+  <!-- //2nd attempt of weather
+  <div style="text-align: center; margin-top: 20px;">
+    <a class="weatherwidget-io" href="https://forecast7.com/en/19d0872d88/mumbai/" data-label_1="MUMBAI" data-label_2="WEATHER" data-theme="original" >MUMBAI WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+    </a>
+  </div>   -->
+
+
+  <!--final weather-->
+  <div style="text-align: center; margin-top: 40px;">
+    <h2>Check Weather in Indian Cities</h2>
+  
+    <select id="citySelect" style="padding: 10px; border-radius: 5px; width: 250px;">
+      <option value="">-- Select a city --</option>
+      <!-- Maharashtra -->
+      <option value="Mumbai">Mumbai</option>
+      <option value="Pune">Pune</option>
+      <option value="Nagpur">Nagpur</option>
+      <option value="Nashik">Nashik</option>
+      <option value="Sangli">Sangli</option>
+      <option value="Jat">Jat</option>
+      <option value="Kolhapur">Kolhapur</option>
+      <option value="Miraj">Miraj</option>
+      <option value="Satara">Satara</option>
+        <!-- Gujarat -->
+      <option value="Ahmedabad">Ahmedabad</option>
+      <option value="Surat">Surat</option>
+      <option value="Vadodara">Vadodara</option>
+      <!-- Delhi -->
+      <option value="Delhi">Delhi</option>
+      <!-- Karnataka -->
+      <option value="Bengaluru">Bengaluru</option>
+      <!-- Tamil Nadu -->
+      <option value="Chennai">Chennai</option>
+      <!-- West Bengal -->
+      <option value="Kolkata">Kolkata</option>
+      <!-- Uttar Pradesh -->
+      <option value="Lucknow">Lucknow</option>
+      <option value="Kanpur">Kanpur</option>
+      <!-- Rajasthan -->
+      <option value="Jaipur">Jaipur</option>
+      <!-- Madhya Pradesh -->
+      <option value="Bhopal">Bhopal</option>
+      <!-- Telangana -->
+      <option value="Hyderabad">Hyderabad</option>
+      <!-- Andhra Pradesh -->
+      <option value="Visakhapatnam">Visakhapatnam</option>
+      <!-- Punjab -->
+      <option value="Ludhiana">Ludhiana</option>
+      <!-- Haryana -->
+      <option value="Gurugram">Gurugram</option>
+      <!-- Bihar -->
+      <option value="Patna">Patna</option>
+      <!-- Assam -->
+      <option value="Guwahati">Guwahati</option>
+    </select>
+  
+    <button onclick="getWeather()" style="padding: 10px 20px; margin-left: 10px;">Show Weather</button>
+  
+    <div id="weatherResult" style="margin-top: 20px;"></div>
+  </div>
+  
+  <script>
+    async function getWeather() {
+      const city = document.getElementById('citySelect').value;
+      const resultDiv = document.getElementById('weatherResult');
+      const apiKey = '90db12a3d755a0eabe0813574d529615'; // Replace with your OpenWeatherMap API key
+  
+      if (!city) {
+        resultDiv.innerHTML = "<p style='color: red;'>Please select a city.</p>";
+        return;
+      }
+  
+      resultDiv.innerHTML = "Fetching weather...";
+  
+      try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},IN&appid=${apiKey}&units=metric`);
+        const data = await response.json();
+  
+        if (data.cod !== 200) {
+          resultDiv.innerHTML = "<p style='color: red;'>City not found. Try again.</p>";
+          return;
+        }
+  
+        resultDiv.innerHTML = `
+          <h3>Weather in ${data.name}</h3>
+          <p><strong>Temperature:</strong> ${data.main.temp} °C</p>
+          <p><strong>Condition:</strong> ${data.weather[0].description}</p>
+          <p><strong>Humidity:</strong> ${data.main.humidity}%</p>
+          <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = "<p style='color: red;'>Error fetching weather data.</p>";
+      }
+    }
+  </script>
+  
+
+
+</body>
+
+</html>

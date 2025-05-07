@@ -1,0 +1,92 @@
+/* General Page Styling */
+.ProductSeedScreen {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+/* Title Styling */
+.ProductSeedScreen h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #155724;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Seed Product Cards */
+.PurchaseSeeds {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.PurchaseSeeds:hover {
+    transform: scale(1.05);
+}
+
+/* Seed Image Styling */
+.PurchaseSeeds img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Product Name Styling */
+.PurchaseSeeds h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Product Price Styling */
+.PurchaseSeeds .price {
+    font-size: 1.1rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Rating & Review Section */
+.PurchaseSeeds .rating {
+    color: #f8b400;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* "Show More" Button */
+.show-more-button {
+    display: block;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.show-more-button:hover {
+    background-color: #218838;
+}
+
+/* Finished Alert */
+.finished-alert {
+    background-color: red !important;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
